@@ -1,0 +1,50 @@
+USE souldiary;
+
+
+CREATE TABLE `user` (
+  `user_id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `coin` int DEFAULT '0',
+  PRIMARY KEY (`user_id`)
+) 
+
+CREATE TABLE `calendar` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `color` varchar(7) NOT NULL,
+  `sticker_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`date`),
+  KEY `sticker_id` (`sticker_id`),
+  CONSTRAINT `calendar_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `calendar_ibfk_2` FOREIGN KEY (`sticker_id`) REFERENCES `stickers` (`sticker_id`)
+) 
+
+CREATE TABLE `diary` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `one` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `diary_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE
+) 
+
+-- 명언
+USE souldiary;
+
+CREATE TABLE `quotes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `text` varchar(255) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+INSERT INTO quotes (text, author) VALUES
+('Life is what happens when you\'re busy making other plans.', 'John Lennon'),
+('The purpose of our lives is to be happy.', 'Dalai Lama'),
+('Get busy living or get busy dying.', 'Stephen King');

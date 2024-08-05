@@ -1,0 +1,26 @@
+/* src/style/calendar.css */
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-day {
+  width: calc(100% / 7); /* 일주일을 7일로 나누어 각 날짜의 너비 설정 */
+  border: 1px solid #ccc;
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tooltip {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
