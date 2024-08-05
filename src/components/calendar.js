@@ -1,5 +1,3 @@
-// calendar.js
-
 import React, { useState, useEffect } from 'react';
 import {
     format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays,
@@ -7,7 +5,7 @@ import {
     isAfter
 } from 'date-fns';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { setMoodColor, fetchUserCalendar, fetchUserDiaries } from './api/api'; // Combined import for simplicity
+import { setMoodColor, fetchUserCalendar, fetchUserDiaries } from './api/api';
 
 const RenderSidebar = ({ isOpen, selectedDate, colors, handleMoodChange, closeSidebar }) => {
     if (!isOpen || !selectedDate) return null;
@@ -291,6 +289,7 @@ function Calendar() {
         );
     };
 
+
     return (
         <div className="container mt-4">
             {hoveredDate && (
@@ -336,3 +335,5 @@ function Calendar() {
 }
 
 export default Calendar;
+
+
